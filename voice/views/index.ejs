@@ -16,9 +16,9 @@
     <!-- Custom styles for this template -->
     <link href="../stylesheets/cover.css" rel="stylesheet">
 
-  </head>
+    </head>
 
-  <body>
+    <body>
 
     <div class="site-wrapper">
 
@@ -27,16 +27,26 @@
         <div class="cover-container">
 
           <div class="inner cover">
-            <h1 class="cover-heading">Cover your page.</h1>
-            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-            <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Learn more</a>
-            </p>
-          </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            <p class="cover-heading" style="font-size:50px; color:black">SpeechRecognition</p>
+            <div class="recordtextfield">
+                <input type="text" id="text" style="width:500px;height:100px;color: black;font-size: 20px;">
+	    </div>
+		<div>
+		    <img id="microphone"  src="../images/microphone.gif" style="display:none;text-align:middle;margin-left:28%; width:300px; height:300px">
+		</div>
+		</br>
+		</br>
+            	<!--<p class="lead">-->
+		<div style="position: absolute;">
+		    <input type="button" id="button1" value="开始计时！" style="display:block;position: absolute;top: 5px;left: 230px;"  class="btn btn-lg btn-primary" onClick="timedCount()"> 
+		    <input type="text" id="txt" value=60 style="color:black;position: absolute;top: 5px;left: 385px;width: 50px;height: 44px;text-align: center;font-size: 23px;"> 
+		    <input type="button" id="button2" value="停止计时！" style="display:none;position: absolute;top: 5px;left: 230px;"  class="btn btn-lg btn-primary" onClick="stopCount()"> 
+		</div>
+            	<!--</p>-->		
+            </div>
+            <div class="mastfoot">
+                <div class="inner">
+                <p style="color:black">SpeechRecognition by Matchbox</p>
             </div>
           </div>
 
@@ -47,7 +57,38 @@
     </div>
 
    
-    
+    <script type="text/javascript"> 
+
+	
+	var c=60 
+	var t 
+	function timedCount() 
+	{ 
+	    document.getElementById("microphone").style.display="block"
+	    document.getElementById("button1").style.display="none"
+	    document.getElementById("button2").style.display="block"
+	    while(c==-1)
+	    {
+	        stopCount()
+	        return
+	    }
+	    document.getElementById('txt').value=c
+            document.getElementById('text').value="Recording..."
+	    c=c-1 
+	    t=setTimeout("timedCount()",1000) 
+	    //triggle speech resolution.
+	} 
+	function stopCount() 
+	{ 
+	    clearTimeout(t)
+	    document.getElementById("button2").style.display="none"
+	    document.getElementById("button1").style.display="block" 
+	    document.getElementById("microphone").style.display="none"
+	    document.getElementById("button1").disabled=true 
+            document.getElementById('text').value="Parsing..." 
+	//triggle textArea changing from "recording" to "resolving",and call speech resolution
+	} 
+  </script> 
   </body>
 </html>
 
