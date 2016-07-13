@@ -27,16 +27,27 @@
         <div class="cover-container">
 
           <div class="inner cover">
-            <h1 class="cover-heading">Cover your page.</h1>
-            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+            <p class="cover-heading" style="font-size:50px; color:black">SpeechRecognition</p>
+            <div class="recordtextfield">
+              <input type="text" id="txt" style="width:500px;height:100px;font-size:30px; color:black;text-align:center">
+	    </div>
+<div>
+<img id="microphone"  src="../images/microphone.gif" style="display:none;margin-left:28%;width:300px;height:300px">
+
+</div>
+		</br>
+</br>
             <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Learn more</a>
+
+        <button type="button" class="btn btn-lg btn-primary" onClick="start()">Start</button>
+
             </p>
+		
           </div>
 
           <div class="mastfoot">
             <div class="inner">
-              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+              <p style="color:black">SpeechRecognition by Matchbox</p>
             </div>
           </div>
 
@@ -47,7 +58,16 @@
     </div>
 
    
-    
+    <script type="text/javascript"> 
+
+function start() 
+{ 
+document.getElementById("microphone").style.display="block"
+document.getElementById("txt").value="Processing Now...";
+
+} 
+
+</script> 
   </body>
 </html>
 
