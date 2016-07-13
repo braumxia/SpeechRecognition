@@ -1,0 +1,39 @@
+<html> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<head> 
+<script type="text/javascript"> 
+var c=60 
+var t 
+function timedCount() 
+{ 
+document.getElementById("button1").style.display="none"
+document.getElementById("button2").style.display="block"
+while(c==-1)
+{
+  stopCount()
+  return
+}
+document.getElementById('txt').value=c 
+c=c-1 
+t=setTimeout("timedCount()",1000) 
+//triggle speech resolution.
+} 
+function stopCount() 
+{ 
+clearTimeout(t)
+document.getElementById("button2").style.display="none"
+document.getElementById("button1").style.display="block" 
+c=60
+document.getElementById('txt').value=c 
+document.getElementById("button1").disabled=true  //triggle textArea changing from "recording" to "resolving",and call speech resolution
+} 
+</script> 
+</head> 
+<body> 
+<form> 
+<input type="button" id="button1" value="开始计时！" style="display:block;position:absolute;top:2%;left:5%" onClick="timedCount()"> 
+<input type="text" id="txt" value=60 style="position:absolute;top:5%;left:5%"> 
+<input type="button" id="button2" value="停止计时！" style="display:none;position:absolute;top:2%;left:5%" onClick="stopCount()"> 
+</form> 
+</body> 
+</html> 
