@@ -39,7 +39,7 @@
             	<!--<p class="lead">-->
 		<div style="position: absolute;">
 		    <input type="button" id="button1" value="开始计时！" style="display:block;position: absolute;top: 5px;left: 230px;"  class="btn btn-lg btn-primary" onClick="timedCount()"> 
-		    <input type="text" id="txt" value=60 style="color:black;position: absolute;top: 5px;left: 385px;width: 50px;height: 44px;text-align: center;font-size: 23px;"> 
+		    <input type="text" id="txt" value=10 style="color:black;position: absolute;top: 5px;left: 385px;width: 50px;height: 44px;text-align: center;font-size: 23px;"> 
 		    <input type="button" id="button2" value="停止计时！" style="display:none;position: absolute;top: 5px;left: 230px;"  class="btn btn-lg btn-primary" onClick="stopCount()"> 
 		</div>
             	<!--</p>-->		
@@ -60,34 +60,40 @@
     <script type="text/javascript"> 
 
 	
-	var c=60 
+	var c=10 
 	var t 
 	function timedCount() 
 	{ 
 	    document.getElementById("microphone").style.display="block"
 	    document.getElementById("button1").style.display="none"
 	    document.getElementById("button2").style.display="block"
-	    while(c==-1)
-	    {
-	        stopCount()
-	        return
-	    }
-	    document.getElementById('txt').value=c
+            document.getElementById('txt').value=c
             document.getElementById('text').value="Recording..."
-	    c=c-1 
-	    t=setTimeout("timedCount()",1000) 
+	    t=setInterval("timedCount1()",1000) 
 	    //triggle speech resolution.
 	} 
 	function stopCount() 
 	{ 
-	    clearTimeout(t)
 	    document.getElementById("button2").style.display="none"
 	    document.getElementById("button1").style.display="block" 
 	    document.getElementById("microphone").style.display="none"
 	    document.getElementById("button1").disabled=true 
             document.getElementById('text').value="Parsing..." 
+    	    clearInterval(t) 	    
+            return
 	//triggle textArea changing from "recording" to "resolving",and call speech resolution
 	} 
+	function timedCount1() 
+        {
+           while(c==0)
+	    {
+	        stopCount()
+  	 	return
+	       
+	    }
+	   c=c-1  
+           document.getElementById('txt').value=c	
+	}
   </script> 
   </body>
 </html>
