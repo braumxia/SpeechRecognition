@@ -62,6 +62,3 @@ server.listen(app.get('port'), function(){
 });
 
 module.exports = app;
-
-app.get('//',gdfg);
-
