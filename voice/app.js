@@ -14,7 +14,7 @@ var server = require('http').createServer(app);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('port', process.env.PORT || 8081);
+app.set('port', process.env.PORT || 8082);
 
 app.use(favicon());
 app.use(logger('dev'));
