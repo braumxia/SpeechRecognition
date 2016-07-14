@@ -62,5 +62,3 @@ server.listen(app.get('port'), function(){
 });
 
 module.exports = app;
-app.use('/user', routes);
-app.use('/user1', routes);
