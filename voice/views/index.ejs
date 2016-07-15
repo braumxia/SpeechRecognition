@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+   
     <title>Cover Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
@@ -19,7 +19,9 @@
     </head>
 
     <body>
-
+    <script src="../javascripts/speech.js"></script>
+    <script src="../javascripts/audioRecorder.js"></script>
+    <script src="../javascripts/callbackManager.js"></script>
     <div class="site-wrapper">
 
       <div class="site-wrapper-inner">
@@ -29,7 +31,8 @@
           <div class="inner cover">
             <p class="cover-heading" style="font-size:50px; color:black">SpeechRecognition</p>
             <div class="recordtextfield">
-                <input type="text" id="text" style="width:500px;height:100px;color: black;font-size: 20px;">
+ 		<select id="grammars" style="display:none"></select>
+                <input type="text" id="output" style="width:500px;height:100px;color: black;font-size: 20px;">
 	    </div>
 		<div>
 		    <img id="microphone"  src="../images/microphone.gif" style="display:none;text-align:middle;margin-left:28%; width:300px; height:300px">
@@ -38,6 +41,7 @@
 		</br>
             	<!--<p class="lead">-->
 		<div style="position: absolute;">
+
 		    <input type="button" id="button1" value="开始计时！" style="display:block;position: absolute;top: 5px;left: 230px;"  class="btn btn-lg btn-primary" onClick="timedCount()"> 
 		    <input type="text" id="txt" value=10 style="color:black;position: absolute;top: 5px;left: 385px;width: 50px;height: 44px;text-align: center;font-size: 23px;"> 
 		    <input type="button" id="button2" value="停止计时！" style="display:none;position: absolute;top: 5px;left: 230px;"  class="btn btn-lg btn-primary" onClick="stopCount()"> 
@@ -56,7 +60,7 @@
 
     </div>
 
-   
+   <script src="/home/nb/nbProject/voice/views/speech.js"></script>	
     <script type="text/javascript"> 
 
 	
@@ -68,20 +72,25 @@
 	    document.getElementById("button1").style.display="none"
 	    document.getElementById("button2").style.display="block"
             document.getElementById('txt').value=c
-            document.getElementById('text').value="Recording..."
+            document.getElementById('output').value="Recording..."
 	    t=setInterval("timedCount1()",1000) 
 	    //triggle speech resolution.
+ 	    startRecording();
+      
 	} 
 	function stopCount() 
 	{ 
 	    document.getElementById("button2").style.display="none"
 	    document.getElementById("button1").style.display="block" 
 	    document.getElementById("microphone").style.display="none"
-	    document.getElementById("button1").disabled=true 
-            document.getElementById('text').value="Parsing..." 
-    	    clearInterval(t) 	    
+	    //document.getElementById("button1").disabled=true 
+            document.getElementById('output').value="Parsing..." 
+    	    clearInterval(t) 
+            stopRecording();	    
             return
 	//triggle textArea changing from "recording" to "resolving",and call speech resolution
+ 
+      	   
 	} 
 	function timedCount1() 
         {
