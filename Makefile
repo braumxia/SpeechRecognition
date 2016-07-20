@@ -1,6 +1,6 @@
 all:buildEnv start
 start:
-    node ./voice/app.js
+    node ./app.js
 buildEnv:
     npm install
 
