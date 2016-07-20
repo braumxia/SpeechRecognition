@@ -1,6 +1,6 @@
 all:buildEnv start
 start:
-    node ./app.js
+	node ./app.js
 buildEnv:
-    npm install
+	npm install
 
